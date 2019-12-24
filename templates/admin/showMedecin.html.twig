@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AdminController!{% endblock %}
+
+
+{% block content %}
+<br><br>
+<div class="container">
+        <table  class="table table-striped table-inverse ">
+            <thead class="thead-inverse">
+                <tr>
+                    <th>id</th>
+                    <th>Matricule</th>
+                    <th>Prenom</th>
+                    <th>Nom</th>
+                    <th>Tel</th>
+                    <th>DateNaissance</th>
+                    <th>Service</th>
+                    <th>Action</th>
+                     
+                    
+                </tr>
+            </thead>
+            <tbody>
+            {% for s in medecins %}  
+                <tr> 
+                    <td scope="row">{{s.id}}</td>
+                    <td scope="row">{{s.matricule}}</td>
+                    <td scope="row">{{s.prenom}}</td>
+                    <td scope="row">{{s.nom}}</td>
+                    <td scope="row">{{s.tel}}</td>
+                    <td>{{ s.dateNaissance ? s.dateNaissance|date('d-m-Y') : '' }}</td>
+                    <td scope="row">{{s.service}}</td><br> 
+                    <td scope="row">
+                        <a href="{{ path('admin.medecin.edit',{'id': s.id}) }}" class="btn btn-warning">Edit</a>
+                        {{ include('admin/_delete_medecin.html.twig') }}
+                    </td>
+
+                    
+                    
+                
+                    
+                </tr>
+            {% endfor %} 
+            </tbody>
+        </table>
+</div>        
+{% endblock %}

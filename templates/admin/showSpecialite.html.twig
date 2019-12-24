@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AdminController!{% endblock %}
+
+
+{% block content %}
+<br><br><br><br>
+<h3 align="center"><i>Specialites</i></h3>
+<div class="container" >
+<table class="table table-striped table-inversed">
+    <thead class="thead-inverse">
+        <tr>
+            <th scope="row">Id</th>
+            <th scope="row">Service</th>
+            <th scope="row">Libelle</th>
+            <th scope="row">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for spec in specialites %}
+            <tr>
+                <td>{{spec.id}}</td>
+                <td>{{spec.service}}</td>
+                <td>{{spec.libelle}}</td>
+                <td>
+                    <a href="{{ path('admin.specialite.edit',{'id': spec.id}) }}" class="btn btn-warning">Edit</a>
+                        {{ include('admin/_delete_specialite.html.twig') }}
+                </td>
+            </tr>
+        {% endfor %}    
+        </tbody>
+</table>
+</div>
+</div>
+{% endblock %}
